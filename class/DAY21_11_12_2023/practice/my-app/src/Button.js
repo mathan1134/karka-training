@@ -1,11 +1,14 @@
 import React from "react"
 
-export const Button=()=>{
-    return(
+export const Button = () => {
+    const hi = () => {
+        console.log("hi")
+    }
+    return (
         <div className="Button">
-       <button>button</button>
-         </div>
+            <button onClick={hi}>button</button>
+        </div>
 
     )
-    
+
 }
