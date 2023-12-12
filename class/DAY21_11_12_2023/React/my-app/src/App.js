@@ -8,11 +8,13 @@ import {Button} from "./Components/Contact"
 
 const App=()=> {
   return(
+    
     <Router>
       <div>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/Contact">Contacts</Link>
+          
           <Link to="/About">About</Link>
         </nav>
       
@@ -29,3 +31,4 @@ const App=()=> {
 }
 
 export default App
+
