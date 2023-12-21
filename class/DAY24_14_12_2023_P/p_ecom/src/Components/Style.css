@@ -40,8 +40,15 @@
 }
 
 button{
-    padding: 1%;
+    padding: 2%;
     border-radius: 2mm;
-    background-color: rgb(209, 102, 168);
-    color: black;
+    background-color: white;
+    color: blue;
+}
+button:hover{
+    background-color: yellow;
+}
+.cartsub button.carrt{
+    padding: 0.5%;
+    background-color: aquamarine;
 }

@@ -7,8 +7,9 @@ export const Top = ({ cartItemsCount }) => {
     <div className='top'>
       <h1>
         My Shopping 
-        <Link to="/Cart">
+        
           <FaCartArrowDown className='sympol' /> 
+          <Link to="/Cart">
           <span>{cartItemsCount}</span>
         </Link>
       </h1>

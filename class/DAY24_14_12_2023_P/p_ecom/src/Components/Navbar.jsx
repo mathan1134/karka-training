@@ -1,4 +1,4 @@
-// Navbar.js
+
 import React from 'react';
 
 export const Navbar = ({ onSelectSize, onSelectCategory }) => {
@@ -26,6 +26,7 @@ export const Navbar = ({ onSelectSize, onSelectCategory }) => {
       <p>Category</p>
       <button onClick={ca_men}>Men</button><br />
       <button onClick={ca_women}>Women</button><br />
+
     </div>
   );
 };

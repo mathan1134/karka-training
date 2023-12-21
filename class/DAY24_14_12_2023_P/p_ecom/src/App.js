@@ -34,10 +34,17 @@ function App() {
   };
 
   const addtocart = (product) => {
-    setCartItems([...cartItems, product]);
+    const isproductcart=cartItems.some(item=>item.id===product.id)
+    if(isproductcart){
+      alert("Product Already in your cart")
+    }
+    else{
+    setCartItems([...cartItems, product])
+    } 
   };
 
   return (
+    <div>
     <Router>
       <div className="App">
         <Routes> 
@@ -65,10 +72,13 @@ function App() {
               </div>
             }
           />
-          <Route path="/Cart" element={<Cart cartItems={cartItems} />} />
+          <Route path="/Cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
         </Routes>
       </div>
+      
     </Router>
+    
+    </div>
   );
 }
 
