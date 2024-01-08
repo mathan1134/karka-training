@@ -1,44 +1,74 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export const Profile = ({updateList}) => {
+export const Profile = () => {
   const location = useLocation();
-  const { username } = location.state || {};
+  const username = location.state?.username;
 
+  const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const edit = (e) => {
+  const handleUpdatePassword = (e) => {
     e.preventDefault();
-  
-    if (!newPassword) {
-      alert('Please provide a new password.');
+
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      setError('Please fill in all fields.');
       return;
     }
-  
-    let data = JSON.parse(localStorage.getItem('data')) || [];
-    data = data.map((value) => {
-      if (value.username === username) {
-        return { ...value, password: newPassword };
-      }
-      return value;
-    });
-  
-    localStorage.setItem('data', JSON.stringify(data));
-    updateList(data);
+
+    const storedUserData = JSON.parse(localStorage.getItem('userData')) || [];
+    const user = storedUserData.find((user) => user.username === username);
+
+    if (!user || user.password !== currentPassword) {
+      setError('Current password is incorrect.');
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      setError('New password and confirmation do not match.');
+      return;
+    }
+
+    const updatedUserData = storedUserData.map((user) =>
+      user.username === username ? { ...user, password: newPassword } : user
+    );
+    localStorage.setItem('userData', JSON.stringify(updatedUserData));
+
+    setError('');
+    alert('Password updated successfully');
   };
-  
 
   return (
     <div>
-      <h3>Welcome {username}</h3>
+      <h3>Welcome, {username}!</h3>
       <h4>Change Password</h4>
-      <input
-        type="text"
-        placeholder="New Password"
-        value={newPassword}
-        onChange={(e) => setNewPassword(e.target.value)}
-      />
-      <button onClick={edit}>Submit</button>
+      <form onSubmit={handleUpdatePassword}>
+        <input
+          type="password"
+          placeholder="Current Password"
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="New Password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+        <br />
+        <input
+          type="password"
+          placeholder="Confirm New Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <br />
+        <button type="submit">Update Password</button>
+      </form>
+      <p style={{ color: 'red' }}>{error}</p>
     </div>
   );
 };

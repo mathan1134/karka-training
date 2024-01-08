@@ -1,28 +1,28 @@
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 
 export const Login = () => {
   const navigate = useNavigate();
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
 
-const handleLogin = (e) => {
-  e.preventDefault();
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-  const storedUserData = JSON.parse(localStorage.getItem('userData')) || [];
-  const user = storedUserData.find((user) => user.username === enteredUsername);
+    const storedUserData = JSON.parse(localStorage.getItem('userData')) || [];
+    const user = storedUserData.find(user => user.username === enteredUsername);
 
-  if (user && user.password === enteredPassword) {
-    alert("Login successful");
-    navigate("/main", { state: { username: enteredUsername } });
-  } else if (user && user.password !== enteredPassword) {
-    alert("Invalid password");
-  } else if (!user) {
-    alert("Invalid username");
-  }
-};
-  
+    if (user && user.password === enteredPassword) {
+      alert("Login successful");
+
+      navigate("/main", { state: { username: enteredUsername } });
+    } else if (user && user.password !== enteredPassword) {
+      alert("Invalid password");
+    } else if (!user) {
+      alert("Invalid username");
+    }
+  };
 
   return (
     <>
@@ -34,8 +34,8 @@ const handleLogin = (e) => {
           id="enteredUsername"
           value={enteredUsername}
           onChange={(e) => setEnteredUsername(e.target.value)}
-          required/><br />
-          
+          required
+        /><br />
         <label htmlFor="enteredPassword">Password</label>
         <input
           type="password"
@@ -47,10 +47,8 @@ const handleLogin = (e) => {
         <button type="submit">Login</button><br />
       </form>
 
-      <Link to="/passwordrec">Forget My Password</Link><br />
+      {/* <Link to="/passwordrec">Forget My Password</Link><br /> */}
       <Link to="/register">Create an Account</Link>
-
-
     </>
   );
 };
