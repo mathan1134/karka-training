@@ -24,12 +24,21 @@ export const Main = () => {
   const addNote = () => {
     if (newNote.trim() === "") return;
 
-    const updatedNotes = [...userNotes, { text: newNote, completed: false }];
+    const updatedNotes = [...userNotes];
+
+    if (editedNoteIndex !== null) {
+      // If in edit mode, update the existing note
+      updatedNotes[editedNoteIndex] = { text: newNote, completed: updatedNotes[editedNoteIndex].completed };
+    } else {
+      // If not in edit mode, add a new note
+      updatedNotes.push({ text: newNote, completed: false });
+    }
 
     localStorage.setItem(`${username}-${password}-notes`, JSON.stringify(updatedNotes));
 
     setUserNotes(updatedNotes);
     setNewNote("");
+    setEditedNoteIndex(null); // Reset editedNoteIndex after adding/editing
   };
 
   const deleteNote = (index) => {
@@ -56,7 +65,7 @@ export const Main = () => {
   };
 
   const sortNotes = () => {
-    const sortedNotes = [...userNotes].sort();
+    const sortedNotes = [...userNotes].sort((a, b) => a.text.localeCompare(b.text));
 
     localStorage.setItem(`${username}-${password}-notes`, JSON.stringify(sortedNotes));
 
@@ -73,12 +82,12 @@ export const Main = () => {
   });
 
   return (
-    <div>
-      <div>
+    <div className="main-container">
+      <div className="profile-section">
         <p>{username}</p>
         <button onClick={goToProfile}>Edit Profile</button>
       </div>
-      <div>
+      <div className="notes-section">
         <h2>Notes</h2>
         <input
           type="text"

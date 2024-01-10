@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export const Main = () => {
     const [userData, setUserData] = useState([]);
@@ -13,16 +13,16 @@ export const Main = () => {
         }
     };
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    // Call fetchData directly in the component body
+    fetchData();
 
     return (
         <>
             <div>
-                <table>
+                <table >
                     <thead>
                         <tr>
+                            <th >s.no</th>
                             <th>ID</th>
                             <th>User ID</th>
                             <th>Title</th>
@@ -30,16 +30,14 @@ export const Main = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {userData.map((todo) => (
-                          if  (todo.completed == "yes") {
-                            return(
-                                <tr key={todo.id}>
-                                    <td>{todo.id}</td>
-                                    <td>{todo.userId}</td>
-                                    <td>{todo.title}</td>
-                                    <td>{todo.completed }</td>
-                                </tr>
-                            ) }
+                        {userData.filter((datas) => datas.completed).map((datas,index) => (
+                            <tr key={datas.id}>
+                                <td>{index+1}</td>
+                                <td>{datas.id}</td>
+                                <td>{datas.userId}</td>
+                                <td>{datas.title}</td>
+                                <td>{datas.completed.toString()}</td>
+                            </tr>
                         ))}
                     </tbody>
                 </table>
