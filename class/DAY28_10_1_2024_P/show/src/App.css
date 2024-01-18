@@ -42,9 +42,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add your desired box shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  /* border: 1px solid #ddd; */
+  /* border: 1px solid  */
   padding: 15px;
   margin: 10px;
 }
@@ -60,7 +60,7 @@
   
 }
 .product:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Change box shadow on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 .product img {
