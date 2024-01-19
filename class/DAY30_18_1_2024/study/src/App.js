@@ -5,6 +5,7 @@ import Third from './Components/Third'
 import Fourth from './Components/Fourth'
 import Fifth from './Components/Fifth'
 import Sixth from './Components/Sixth'
+import Day from './Components/Day'
 
 const DependencyExample = () => {
   const [count, setCount] = useState(0);
@@ -46,6 +47,7 @@ const DependencyExample = () => {
       <Fourth/>
       <Fifth/>
       <Sixth/>
+      <Day/>
     </div>
   );
 };

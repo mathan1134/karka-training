@@ -1,4 +1,3 @@
-// Components/Fourth.jsx
 import React, { useRef } from 'react';
 import { Fourth2 } from './Fourth2';
 
