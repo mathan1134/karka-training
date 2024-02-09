@@ -9,12 +9,14 @@
 # 2024 is a leap year
 
 
-def leaf_year():
-
-    year=int(input("enter the year :"))
-    if year//4==0 or year//400:
-        print(year ,"is a leap year")
+def leap_year():
+    year = int(input("Enter the year: "))
+    if (year % 400 == 0):
+        print(year, "is a leap year")
     else:
-        print(year,"not leap year")
+        print(year, "is not a leap year")
+   
+    
+            
 
-leaf_year()
+leap_year()

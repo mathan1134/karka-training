@@ -14,7 +14,4 @@ while 45:
 print("The total is:", total)     
 
 
-
-
-
-                                         
+                                     

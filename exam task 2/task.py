@@ -9,7 +9,7 @@ for num in x:
     result.append(0)
     result.append(num * 3) 
 
-print(result)
+# print(result)
 
 
 
@@ -50,10 +50,23 @@ print(result)
 # print("y =", y)
 
 start = 1
-end=int(input("enter a num: "))
+# end=int(input("enter a num: "))
 total = 0
 
-for num in range(start, end +1 ):
-    total += num
+# for num in range(start, end +1 ):
+#     total += num
 
-print("Sum:", total)
+# print("Sum:", total)
+
+
+            
+arr = [1, 0, 2, 3, 0, 4, 5, 0]
+
+i = 0
+while i < len(arr):
+    arr.insert(i+1, arr[i])
+    i += 2
+
+print(arr)
+
+

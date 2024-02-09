@@ -36,10 +36,13 @@ const DependencyExample = () => {
 
   return (
     <div>
-      <p>Count: {count}</p>
+      <p style={{backgroundColor:"green"}}>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Increment</button>
       <p>Count1: {count1}</p>
       <button onClick={() => setCount1(count1 + 1)}>Increment</button>
+      <hr></hr>
+      <marquee bgcolor="red"><p>hi</p></marquee>
+      <pre>jio</pre>
 
       <User />
       <Second/>
